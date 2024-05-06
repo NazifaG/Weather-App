@@ -14,12 +14,11 @@ async function checkWeather(url){
       try{
         const response = await fetch(url)
         const data = await response.json()
-        console.log(data)
 
         weatherInfo(data)
 
       } catch(err){
-        console.log(err);
+        console.log('ssssssssss');
       }     
        
 
@@ -33,7 +32,6 @@ function search(){
     checkWeather(searchCity)
 }
 
-search()
 
 searchBtn.addEventListener('click', search)
 
@@ -49,25 +47,24 @@ input.addEventListener('keypress', function(event){
 
 function weatherInfo(data){
     const arr = data
-   
     document.querySelector('.city').innerHTML= data.name
-    document.querySelector('.temp').innerHTML= Math.round(data.main.temp) + "°C "
+    document.querySelector('.temp').innerHTML= Math.floor(data.main.temp) + "°C "
     document.querySelector('.humidity').innerHTML=data.main.humidity + "%"
     document.querySelector('.wind').innerHTML=data.wind.speed + " km/h"
 
 
     if(data.weather[0].main == "Clouds"){
-        weatherIcon.src ="assets/img/weather-app-img (1)/images/clouds.png";
+        weatherIcon.src ="./assets/img/weather-app-img (1)/images/clouds.png";
     }else if(data.weather[0].main == "Clear"){
-        weatherIcon.src ="assets/img/weather-app-img (1)/images/clear.png";
+        weatherIcon.src ="./assets/img/weather-app-img (1)/images/clear.png";
     } else if(data.weather[0].main == "Rain"){
-        weatherIcon.src ="assets/img/weather-app-img (1)/images/rain.png";
+        weatherIcon.src ="./assets/img/weather-app-img (1)/images/rain.png";
     } else if(data.weather[0].main == "Drizzle"){
-        weatherIcon.src ="assets/img/weather-app-img (1)/images/drizzle.png";
+        weatherIcon.src ="./assets/img/weather-app-img (1)/images/drizzle.png";
     } else if(data.weather[0].main == "Mist"){
-        weatherIcon.src ="assets/img/weather-app-img (1)/images/mist.png";
+        weatherIcon.src ="./assets/img/weather-app-img (1)/images/mist.png";
     } else if(data.weather[0].main == "Snow"){
-        weatherIcon.src ="assets/img/weather-app-img (1)/images/snow.png";
+        weatherIcon.src ="./assets/img/weather-app-img (1)/images/snow.png";
     } 
 
        document.querySelector(".card-details").style.display = "block" 
